@@ -19,6 +19,16 @@ class SessionRepository {
         }
     }
 
+    async fetchSession(user_id: string, device_id?: string): Promise<ISession[]> {
+        const query: { user_id: string, device_id?: string } = { user_id };
+
+        if (device_id) {
+            query.device_id = device_id;
+        }
+
+        return await Session.find(query);
+    }
+
     async updateSession(user_id: string, device_id: string, token: string): Promise<SessionResponse> {
         try {
             const session = await Session.findOneAndUpdate(
