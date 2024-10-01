@@ -257,7 +257,7 @@ class AuthController {
 
     logout = async (req: Request, res: Response): Promise<void> => {
         try {
-            const deviceId = req.headers['x-device-id'];
+            const deviceId = req.headers['X-Device-ID'];
 
             await SessionRepository.deleteSession(req.user?._id as string, deviceId as string);
 

@@ -62,7 +62,7 @@ class AuthMiddleware {
     protect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const authToken = req.headers.authorization;
-            const device_id = req.headers['x-device-id'];
+            const device_id = req.headers['X-Device-ID'];
 
             const { user, session, message, statusCode } = await this.validateToken(authToken as string, device_id as string);
 
